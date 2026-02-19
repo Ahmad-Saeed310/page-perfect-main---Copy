@@ -1,0 +1,269 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Blank Page Generator - Modern Document Tool Design System */
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 220 25% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 10%;
+
+    --primary: 168 84% 32%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 18% 96%;
+    --secondary-foreground: 220 25% 20%;
+
+    --muted: 210 12% 94%;
+    --muted-foreground: 220 15% 45%;
+
+    --accent: 168 70% 94%;
+    --accent-foreground: 168 84% 25%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 168 84% 32%;
+
+    --radius: 0.625rem;
+
+    /* Custom tokens for the generator */
+    --canvas-bg: 0 0% 100%;
+    --canvas-shadow: 220 25% 75%;
+    --toolbar-bg: 0 0% 100%;
+    --preview-bg: 210 15% 97%;
+    --template-border: 220 15% 88%;
+    --template-hover: 168 70% 96%;
+    --template-selected: 168 84% 32%;
+    --notepad-bg: 45 100% 97%;
+    --notepad-line: 45 40% 85%;
+    
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 25% 20%;
+    --sidebar-primary: 168 84% 32%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 168 70% 94%;
+    --sidebar-accent-foreground: 168 84% 25%;
+    --sidebar-border: 220 15% 90%;
+    --sidebar-ring: 168 84% 32%;
+
+    /* Modern gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(168 84% 32%) 0%, hsl(168 84% 38%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 20% 99%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(210 20% 98%) 0%, hsl(210 15% 96%) 100%);
+  }
+
+  .dark {
+    --background: 220 25% 8%;
+    --foreground: 210 20% 98%;
+
+    --card: 220 25% 11%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 220 25% 11%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 168 84% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 20% 16%;
+    --secondary-foreground: 210 20% 90%;
+
+    --muted: 220 15% 18%;
+    --muted-foreground: 220 12% 60%;
+
+    --accent: 168 50% 18%;
+    --accent-foreground: 168 70% 80%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 18% 20%;
+    --input: 220 18% 20%;
+    --ring: 168 84% 42%;
+
+    --canvas-bg: 220 25% 13%;
+    --canvas-shadow: 220 25% 5%;
+    --toolbar-bg: 220 25% 11%;
+    --preview-bg: 220 25% 6%;
+    --template-border: 220 18% 22%;
+    --template-hover: 168 50% 15%;
+    --template-selected: 168 84% 42%;
+    --notepad-bg: 220 25% 13%;
+    --notepad-line: 220 18% 22%;
+
+    --sidebar-background: 220 25% 11%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 168 84% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 168 50% 18%;
+    --sidebar-accent-foreground: 168 70% 80%;
+    --sidebar-border: 220 18% 20%;
+    --sidebar-ring: 168 84% 42%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(168 84% 38%) 0%, hsl(168 84% 45%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(220 25% 11%) 0%, hsl(220 25% 10%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(220 25% 8%) 0%, hsl(220 25% 6%) 100%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .canvas-container {
+    @apply bg-preview rounded-xl p-6 md:p-8 flex items-center justify-center overflow-auto;
+    min-height: 500px;
+    background: var(--gradient-subtle);
+  }
+
+  .paper-canvas {
+    @apply bg-canvas shadow-paper rounded-sm;
+  }
+
+  .template-card {
+    @apply border-2 border-template rounded-xl p-3.5 cursor-pointer transition-all duration-200;
+    background: var(--gradient-card);
+  }
+
+  .template-card:hover {
+    @apply bg-template-hover border-primary/40 shadow-sm;
+    transform: translateY(-1px);
+  }
+
+  .template-card.selected {
+    @apply border-template-selected bg-accent shadow-md;
+  }
+
+  .control-section {
+    @apply space-y-3 pb-5 border-b border-border/60 last:border-0 last:pb-0;
+  }
+
+  .control-label {
+    @apply text-sm font-semibold text-foreground tracking-tight;
+  }
+
+  .notepad-area {
+    @apply bg-notepad min-h-[200px] p-4 rounded-xl font-mono text-sm leading-relaxed transition-all duration-200;
+    background-image: repeating-linear-gradient(
+      transparent,
+      transparent 27px,
+      hsl(var(--notepad-line)) 28px
+    );
+    background-position-y: -1px;
+  }
+
+  .notepad-area:focus {
+    @apply ring-2 ring-primary/20 border-primary/40;
+  }
+
+  /* Modern button enhancements */
+  .btn-primary-gradient {
+    background: var(--gradient-primary);
+    @apply text-primary-foreground shadow-sm hover:shadow-md transition-all duration-200;
+  }
+
+  .btn-primary-gradient:hover {
+    filter: brightness(1.05);
+  }
+
+  /* Glass effect for overlays */
+  .glass {
+    @apply bg-background/80 backdrop-blur-md border border-border/50;
+  }
+
+  /* Subtle hover effect for interactive elements */
+  .hover-lift {
+    @apply transition-transform duration-200;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+}
+
+@layer utilities {
+  .shadow-paper {
+    box-shadow: 
+      0 1px 3px hsl(var(--canvas-shadow) / 0.1),
+      0 6px 16px hsl(var(--canvas-shadow) / 0.08),
+      0 16px 48px hsl(var(--canvas-shadow) / 0.06);
+  }
+
+  .shadow-toolbar {
+    box-shadow: 
+      0 1px 2px hsl(var(--canvas-shadow) / 0.08),
+      0 2px 8px hsl(var(--canvas-shadow) / 0.04);
+  }
+
+  .bg-canvas {
+    background-color: hsl(var(--canvas-bg));
+  }
+
+  .bg-preview {
+    background-color: hsl(var(--preview-bg));
+  }
+
+  .bg-toolbar {
+    background-color: hsl(var(--toolbar-bg));
+  }
+
+  .bg-notepad {
+    background-color: hsl(var(--notepad-bg));
+  }
+
+  .bg-template-hover {
+    background-color: hsl(var(--template-hover));
+  }
+
+  .border-template {
+    border-color: hsl(var(--template-border));
+  }
+
+  .border-template-selected {
+    border-color: hsl(var(--template-selected));
+  }
+
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.3s ease-out;
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-8px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+}
